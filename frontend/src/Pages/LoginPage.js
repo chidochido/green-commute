@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export default function LoginPage() {
   const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
