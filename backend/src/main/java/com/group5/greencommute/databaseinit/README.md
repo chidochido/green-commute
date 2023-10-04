@@ -6,13 +6,19 @@ If you wanted to add/delete/update/get using code use the functions in UserServi
 Codes after //// are the added database codes
 
 If you wanted to get a user's information run:
-[url]/api/users/getUserDetails?name=[the username]
+[url]/api/user/getUserDetails?name=[the username]
 
 If you wanted to add a user, have information in the body (all parts of the user's information in a json file) and then run:
-[url]/api/users/createUser
+[url]/api/user/createUser
 
 If you wanted to edit, include information (all parts of the user's information in a json file) then run:
-[url]/api/users/updateUser?name=[the username]
+[url]/api/user/updateUser?name=[the username]
 
 If you wanted to delete a user run:
-[url]/api/users/deleteUser?name=[the username]
+[url]/api/user/deleteUser?name=[the username]
+
+for example:
+Post
+http://localhost:8080/api/user/createUser
+Delete
+http://localhost:8080/api/user/deleteUser?name=nemo
