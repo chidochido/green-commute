@@ -4,11 +4,15 @@ public class User {
     private int id;
     private String name;
     private String email;
+    private double score;
+    private String pwd;
 
-    public User(int id, String name, String email) {
+    public User(int id, String name, String email, String pwd) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.pwd = pwd;
+        score = 0;
     }
 
     public int getId() {
@@ -33,5 +37,18 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+    public String getPwd() {
+        return pwd;
+    }
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public double getScore() {
+        return score;
+    }
+    public void setScore(double score) {
+        this.score = score;
     }
 }
