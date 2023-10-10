@@ -42,3 +42,11 @@ build/
 
 ### Scripts ###
 launch_easy_push.sh
+
+### main ###
+.DS_Store
+.idea
+.env
+.env.local
+backend/target/*
+node_modules

@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -30,6 +31,16 @@ public class UserController {
     }
 
     /////
+    @GetMapping("/getAll")
+    public String getAllUsers() {
+        List<User> currUserList = userService.getUserList();
+        String users = "";
+        for (User curr: currUserList){
+            users = users + curr.getName() + "\n";
+        }
+        return users;
+    }
+
     @GetMapping("/getUserDetails")
     public User getUser(@RequestParam String name ) throws InterruptedException, ExecutionException{
         return userService.getUserDetails(name);

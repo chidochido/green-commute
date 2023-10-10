@@ -1,6 +1,6 @@
 # To run:
 
-Create a ".env" file in the root dir, and add "REACT_APP_GMAPS_JS_API_KEY=YOUR KEY"
+Create a ".env.local" file in the root dir, and add "REACT_APP_GMAPS_JS_API_KEY=YOUR KEY"
 Then run npm start from the root dir.
 
 ## Available Scripts
