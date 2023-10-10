@@ -31,4 +31,4 @@ Your app is ready to be deployed!
 1) git add .
 2) git commit -a -m "commit_msg"
 3) git push
-4) Use the `launch_easy_push` script by executing `./launch_easy_push 'my_msg'` to push to the repo fast and conveniently... The only argument that it takes is a commit message (must be in quotes).
+4) Use the `launch_easy_push` script by executing `./launch_easy_push 'my_msg'` to push to the repo fast and conveniently... The only argument that it takes is a commit message (MUST be in quotes).
