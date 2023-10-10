@@ -39,3 +39,6 @@ build/
 
 ### API Key ###
 /frontend/.env
+
+### Scripts ###
+launch_easy_push.sh
