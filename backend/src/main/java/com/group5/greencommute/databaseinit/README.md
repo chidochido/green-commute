@@ -5,6 +5,9 @@ If you wanted to add/delete/update/get using code use the functions in UserServi
 
 Codes after //// are the added database codes
 
+If you wanted to get all user's names run:
+[url]/api/user/getAll
+
 If you wanted to get a user's information run:
 [url]/api/user/getUserDetails?name=[the username]
 
