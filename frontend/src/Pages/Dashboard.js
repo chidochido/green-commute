@@ -60,7 +60,7 @@ function Dashboard(props) {
         sx={{
           bgcolor: "white",
           height: "100vh",
-          width: "75%",
+          width: "60%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",

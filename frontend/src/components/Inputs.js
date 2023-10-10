@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 import { Autocomplete } from "@react-google-maps/api";
 
@@ -10,7 +10,16 @@ function Inputs(props) {
   };
 
   return (
-    <Box component="form" noValidate onSubmit={submitHandler} sx={{ mt: 1 }}>
+    <Box component="form" noValidate onSubmit={submitHandler} width={"80%"}>
+      <Typography
+        component="h3"
+        variant="h3"
+        color="green"
+        align="center"
+        mb={"30px"}
+      >
+        <strong>Green 🌿 Commute</strong>
+      </Typography>
       <Autocomplete>
         <TextField
           margin="normal"
