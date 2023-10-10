@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+.env
 .env.local
 backend/target/*
 node_modules

@@ -20,7 +20,7 @@ function DashboardLayout(props) {
   const [duration, setDuration] = useState("");
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBsxXEYE5kI-dbUcawTa85-jmL3CGsC2EQ",
+    googleMapsApiKey: process.env.REACT_APP_GMAPS_JS_API_KEY,
     libraries: ["places"],
   });
 
