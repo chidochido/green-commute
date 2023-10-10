@@ -1,17 +1,11 @@
 import * as React from "react";
 import { useState } from "react";
-import {
-  Stack,
-  Box,
-  Divider,
-  Button,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Stack, Box, Divider, Typography } from "@mui/material";
 
-import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
+import { useJsApiLoader } from "@react-google-maps/api";
 
 import Map from "./Map";
+import Inputs from "./Inputs";
 
 function DashboardLayout(props) {
   const google = window.google;
@@ -28,11 +22,9 @@ function DashboardLayout(props) {
     return "LOADING";
   }
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    if (data.get("origin").length > 0 && data.get("destination").length > 0) {
-      getDirections(data);
+  const submitHandler = (input) => {
+    if (input.get("origin").length > 0 && input.get("destination").length > 0) {
+      getDirections(input);
     }
   };
 
@@ -75,42 +67,7 @@ function DashboardLayout(props) {
           padding: "50px",
         }}
       >
-        <Box
-          component="form"
-          noValidate
-          onSubmit={submitHandler}
-          sx={{ mt: 1 }}
-        >
-          <Autocomplete>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              id="origin"
-              label="Origin"
-              name="origin"
-            />
-          </Autocomplete>
-          <Autocomplete>
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="destination"
-              label="Destination"
-              id="destination"
-            />
-          </Autocomplete>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Submit
-          </Button>
-        </Box>
+        <Inputs submitHandler={submitHandler} />
         <Typography>Distance: {distance} </Typography>
         <Typography>Duration: {duration} </Typography>
       </Box>
