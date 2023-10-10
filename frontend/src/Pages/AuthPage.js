@@ -18,7 +18,7 @@ export default function AuthPage() {
   const navigate = useNavigate();
   const [loginMode, setLoginMode] = useState(true);
   const signInLabel = loginMode ? "Sign in" : "Sign up";
-  const newUserLabel = loginMode ? "New User?" : "Back to Sign in";
+  const newUserLabel = loginMode ? "ice cream" : "Back to Sign in";
 
   const [pwdMatch, setPwdMatch] = useState(true);
   const pwdMatchLabel = pwdMatch ? "" : "Error: Invalid username or password";

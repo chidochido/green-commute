@@ -78,4 +78,7 @@ public class UserService {
         return "Document with User ID "+name+" has been deleted";
     }
 
+    public List<User> getUserList() {
+        return userList;
+    }
 }
