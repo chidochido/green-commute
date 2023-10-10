@@ -40,7 +40,27 @@ function Inputs(props) {
           id="destination"
         />
       </Autocomplete>
-
+        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
+            Gas Car
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
+            Electric Car
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
+            Biking
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
+            Walking
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
+            E-Scooter
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
+            Public Transport
+        </Button>
+        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
+            Carpool
+        </Button>
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
         Submit
       </Button>
