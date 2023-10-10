@@ -27,7 +27,7 @@ Your app is ready to be deployed!
 3) Ensure that the `Routes API` is enabled.
 4) Ensure that the `Places API` is enabled.
 
-## Pushing
+## Pushing to the Local Repo
 1) `git add .`
 2) `git commit -a -m "commit_msg"`
 3) `git push --set-upstream origin my_branch`
