@@ -9,6 +9,7 @@ function Inputs(props) {
     props.submitHandler(data);
   };
 
+  // Rainbow Colored Buttons...
   return (
     <Box component="form" noValidate onSubmit={submitHandler} width={"80%"}>
       <Typography
