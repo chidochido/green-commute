@@ -1,4 +1,0 @@
-git add .
-git commit -a -m "{$2}"
-git push --set-upstream origin $1
-
