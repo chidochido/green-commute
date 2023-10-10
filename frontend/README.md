@@ -28,7 +28,7 @@ Your app is ready to be deployed!
 4) Ensure that the `Places API` is enabled.
 
 ## Pushing
-1) git add .
-2) git commit -a -m "commit_msg"
-3) git push
-4) Use the `launch_easy_push` script by executing `./launch_easy_push 'my_msg'` to push to the repo fast and conveniently... The only argument that it takes is a commit message (MUST be in quotes).
+1) `git add .`
+2) `git commit -a -m "commit_msg"`
+3) `git push --set-upstream origin my_branch`
+4) Use the `launch_easy_push` script by executing `./launch_easy_push 'my_msg'` to push to the repo fast and conveniently (intended to boost developer throughput)... The only argument that it takes is a commit message (MUST be in quotes).
