@@ -19,14 +19,6 @@ public class UserService {
     private List<User> userList;
     public UserService() {
         userList = new ArrayList<>();
-
-        User user1 = new User(1, "Chido", "chido@chido.com","123");
-        User user2 = new User(2, "Harsha", "harsha@harsha.com","123");
-        User user3 = new User(3, "Zach", "zach@zach.com","123");
-        User user4 = new User(4, "Mohammed", "mohammed@mohammed.com","123");
-        User user5 = new User(5, "Roham", "roham@roham.com","123");
-
-        userList.addAll(Arrays.asList(user1, user2, user3, user4, user5));
     }
 
     public User getUser(Integer id) {

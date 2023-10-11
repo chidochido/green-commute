@@ -7,14 +7,6 @@ public class User {
     private double score;
     private String pwd;
 
-    public User(int id, String name, String email, String pwd) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.pwd = pwd;
-        score = 0;
-    }
-
     public int getId() {
         return id;
     }
