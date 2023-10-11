@@ -23,9 +23,23 @@ function Dashboard(props) {
   }
 
   const submitHandler = (input) => {
-    if (input.get("origin").length > 0 && input.get("destination").length > 0) {
-      getDirections(input);
-    }
+    console.log(input);
+    getDirections(input);
+
+    /*
+    input.get("origin"); = string containing the origin addr
+    input.get("destination");  = string containing the destination addr
+    input.get("transport");  = string containing the transport mode
+
+    Strings for transport include:
+    gas_car
+    electric_car
+    biking
+    walking
+    electric_scooter
+    public_transport
+    carpool
+    */
   };
 
   const getDirections = async (input) => {
