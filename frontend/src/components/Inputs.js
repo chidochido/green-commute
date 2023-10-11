@@ -72,13 +72,13 @@ function Inputs(props) {
         onChange={handleChange}
       >
         <MenuItem value="default">Choose a Transport Type *</MenuItem>
-        <MenuItem value="gas_car">Gas Car</MenuItem>
-        <MenuItem value="electric_car">Electric Car</MenuItem>
         <MenuItem value="biking">Biking</MenuItem>
-        <MenuItem value="walking">Walking</MenuItem>
-        <MenuItem value="electric_scooter">E-Scooter</MenuItem>
-        <MenuItem value="public_transport">Public Transport</MenuItem>
         <MenuItem value="carpool">Carpool</MenuItem>
+        <MenuItem value="electric_car">Electric Car</MenuItem>
+        <MenuItem value="electric_scooter">E-Scooter</MenuItem>
+        <MenuItem value="gas_car">Gas Car</MenuItem>
+        <MenuItem value="public_transport">Public Transport</MenuItem>
+        <MenuItem value="walking">Walking</MenuItem>
       </Select>
       <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 2 }}>
         Submit
