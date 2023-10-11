@@ -8,6 +8,15 @@ import Map from "../components/Map";
 import Inputs from "../components/Inputs";
 
 function Dashboard(props) {
+  // const transportTypes = [
+  //   "biking",
+  //   "electric_car",
+  //   "electric_scooter",
+  //   "gas_car",
+  //   "public_transport",
+  //   "walking",
+  // ];
+
   const google = window.google;
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
@@ -25,11 +34,21 @@ function Dashboard(props) {
   const submitHandler = (input) => {
     console.log(input);
     getDirections(input);
+    if (
+      input.get("transport") !== "biking" ||
+      input.get("transport") !== "walking"
+    ) {
+      // TODO: make the api call and display the results as carbon footprint
+      //let results = getCarbonFootprint(input);
+      // this is because we already know biking and walking are 0. we can just display 0 without making a call.
+    }
 
     /*
-    input.get("origin"); = string containing the origin addr
-    input.get("destination");  = string containing the destination addr
-    input.get("transport");  = string containing the transport mode
+    input.get("origin"); = STRING containing the origin addr
+    input.get("destination");  = STRING containing the destination addr
+    input.get("transport");  = STRING containing the transport mode
+    input.get("mileage");  = STRING containing the mileage >= "1" OR "N/A" if not entered.
+    input.get("numPeople");  = STRING containing the number of people >= 1
 
     Strings for transport include:
     gas_car
@@ -38,7 +57,6 @@ function Dashboard(props) {
     walking
     electric_scooter
     public_transport
-    carpool
     */
   };
 
@@ -54,6 +72,23 @@ function Dashboard(props) {
       setDirectionsResponse(results);
       setDistance(results.routes[0].legs[0].distance.text);
       setDuration(results.routes[0].legs[0].duration.text);
+
+      if (
+        input.get("transport") !== "biking" ||
+        input.get("transport") !== "walking"
+      ) {
+        // make the api call and display the results as carbon footprint
+      } else {
+        // dont make the api call but display 0 as carbon footprint
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getCarbonFootprint = async (input) => {
+    try {
+      // TODO: make the api call and display the results as carbon footprint
     } catch (err) {
       console.log(err);
     }
