@@ -1,11 +1,19 @@
 package com.group5.greencommute.api.model;
 
-import com.group5.greencommute.api.model.TransportMethod;
-
 public class RouteLog {
     private int dist;
     private String start;
     private String destination;
+    
+    enum TransportMethod {
+        GAS_CAR,
+        ELECTRIC_CAR,
+        WALK,
+        BIKE,
+        E_SCOOTER,
+        PUBLIC_TRANSPORT,
+        CARPOOL
+    }
     private TransportMethod method;
 
     public RouteLog(int dist, String start, String destination, TransportMethod method) {
@@ -27,7 +35,7 @@ public class RouteLog {
         return this.destination;
     }
 
-    public TransportMethod getMethod() {
-        return this.method;
+    public String getMethod() {
+        return this.method.toString();
     }
 }
