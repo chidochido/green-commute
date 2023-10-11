@@ -71,14 +71,6 @@ public class CarbonEmit {
         return 0.0;
     }
 
-    public static double carbonWalking(double distance) throws Exception{
-        return 0.0;
-    }
-
-    public static double carbonBiking(double distance) throws Exception{
-        return 0.0;
-    }
-
     public static double carbonCar(double distance,int passengers) throws Exception{
         Transcript ele = new Transcript();
         ele.setType("vehicle");
