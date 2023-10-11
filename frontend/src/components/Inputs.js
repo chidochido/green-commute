@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import {Box, Button, MenuItem, Select, TextField, Typography} from "@mui/material";
 
 import { Autocomplete } from "@react-google-maps/api";
 
@@ -40,30 +40,19 @@ function Inputs(props) {
           id="destination"
         />
       </Autocomplete>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Gas Car
+        <Select labelId="label" id="select" value="default" sx={{ mt: 2, mb: 2 }}>
+            <MenuItem value="default">Choose a Transport Type *</MenuItem>
+            <MenuItem value="gas_car">Gas Car</MenuItem>
+            <MenuItem value="electric_car">Electric Car</MenuItem>
+            <MenuItem value="biking">Biking</MenuItem>
+            <MenuItem value="walking">Walking</MenuItem>
+            <MenuItem value="electric_scooter">E-Scooter</MenuItem>
+            <MenuItem value="public_transport">Public Transport</MenuItem>
+            <MenuItem value="carpool">Carpool</MenuItem>
+        </Select>
+        <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 2 }}>
+            Submit
         </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Electric Car
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Biking
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Walking
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
-            E-Scooter
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
-            Public Transport
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
-            Carpool
-        </Button>
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-        Submit
-      </Button>
     </Box>
   );
 }
