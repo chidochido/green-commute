@@ -12,9 +12,10 @@ public class FBInitialize {
 
     @PostConstruct
     public void initialize() {
+        System.out.println(System.getProperty("user.dir"));
         try {
             FileInputStream serviceAccount =
-                    new FileInputStream("src/main/java/com/group5/greencommute/databaseinit/dbforgreen-firebase-adminsdk-47x5b-688c50e263.json");
+                    new FileInputStream("backend/src/main/java/com/group5/greencommute/databaseinit/dbforgreen-firebase-adminsdk-47x5b-688c50e263.json");
 
             FirebaseOptions options = new FirebaseOptions.Builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))

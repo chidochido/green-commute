@@ -11,7 +11,9 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -59,4 +61,40 @@ public class UserController {
     public String deleteUser(@RequestParam String name){
         return userService.deleteUser(name);
     }
+
+
+//    @PostMapping("/signup")
+//    public ResponseEntity<Map<String, Object>> signUp (@RequestBody Map<String, Object> userDetails) {
+//
+//    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, Object>> logIn (@RequestBody Map<String, String> userDetails)  throws InterruptedException, ExecutionException {
+        Map<String, Object> res = new HashMap<>();
+
+        User user = userService.getUserDetails(userDetails.get("username")); // need to verify getUserDetails works together
+
+        if (user == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        if (userDetails.get("password") == null || user.getPwd() == null) {
+            res.put("message", "password null");
+            return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
+        } else if (!user.getPwd().equals(userDetails.get("password"))) {
+            res.put("message", "password incorrect");
+            return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
+        } else if (user.getPwd().equals(userDetails.get("password"))) {
+            res.put("id", user.getId());
+            res.put("username", user.getName());
+            res.put("password", user.getPwd());
+            res.put("email", user.getEmail());
+            res.put("score", user.getScore());
+            return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
+        } else {
+            res.put("message", "unknown server error");
+            return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
 }
