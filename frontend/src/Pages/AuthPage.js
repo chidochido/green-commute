@@ -17,11 +17,11 @@ const theme = createTheme();
 export default function AuthPage() {
   const navigate = useNavigate();
   const [loginMode, setLoginMode] = useState(true);
-  const signInLabel = loginMode ? "Sign in" : "Sign up";
-  const newUserLabel = loginMode ? "New User?" : "Back to Sign in";
+  const signInLabel = loginMode ? "Sign In" : "Sign Up";
+  const newUserLabel = loginMode ? "New User?" : "Back to Sign In";
 
   const [pwdMatch, setPwdMatch] = useState(true);
-  const pwdMatchLabel = pwdMatch ? "" : "Error: Invalid username or password";
+  const pwdMatchLabel = pwdMatch ? "" : "ERROR: Invalid username, password, or both. Please ensure that passwords match!";
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -186,6 +186,7 @@ export default function AuthPage() {
 
               <Button
                 type="submit"
+                style = {{background:'green'}}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
@@ -196,7 +197,7 @@ export default function AuthPage() {
 
             <Button
               type="submit"
-              fullWidth
+              style = {{color:'green'}}
               variant="text"
               onClick={switchModeHandler}
             >
