@@ -67,6 +67,7 @@ function Inputs(props) {
     }
   };
 
+  // NOTE: the following resembling HTML is React code.
   return (
     <Box component="form" noValidate onSubmit={submitHandler} width={"80%"}>
       <Typography
@@ -149,7 +150,7 @@ function Inputs(props) {
           id="mileage"
         />
       )}
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 2 }}>
+      <Button style = {{background:'green'}} type="submit" fullWidth variant="contained" sx={{ mt: 2, mb: 2}}>
         Submit
       </Button>
     </Box>
