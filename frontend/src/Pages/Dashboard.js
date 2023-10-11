@@ -48,7 +48,8 @@ function Dashboard(props) {
       const results = await directionsService.route({
         origin: input.get("origin"),
         destination: input.get("destination"),
-        travelMode: "DRIVING",
+        travelMode: google.maps.TravelMode.DRIVING,
+        // Don't change this ^ from driving to anything else; all we need is the distance.
       });
       setDirectionsResponse(results);
       setDistance(results.routes[0].legs[0].distance.text);
