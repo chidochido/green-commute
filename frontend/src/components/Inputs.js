@@ -1,12 +1,35 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 import { Autocomplete } from "@react-google-maps/api";
 
 function Inputs(props) {
+  const [transport, setTransport] = useState("default");
+
+  const handleChange = (event) => {
+    setTransport(event.target.value);
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    props.submitHandler(data);
+    const input = new FormData(event.currentTarget);
+    if (
+      input.get("origin").length > 0 &&
+      input.get("destination").length > 0 &&
+      transport &&
+      transport !== "default"
+    ) {
+      input.append("transport", transport);
+      props.submitHandler(input);
+    }
   };
 
   return (
@@ -40,28 +63,24 @@ function Inputs(props) {
           id="destination"
         />
       </Autocomplete>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Gas Car
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Electric Car
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Biking
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 2, mb: 0 }}>
-            Walking
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
-            E-Scooter
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
-            Public Transport
-        </Button>
-        <Button type="submit" variant="contained" sx={{ mt: 0, mb: 2 }}>
-            Carpool
-        </Button>
-      <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={transport}
+        label="Age"
+        defaultValue="default"
+        onChange={handleChange}
+      >
+        <MenuItem value="default">Choose a Transport Type *</MenuItem>
+        <MenuItem value="biking">Biking</MenuItem>
+        <MenuItem value="carpool">Carpool</MenuItem>
+        <MenuItem value="electric_car">Electric Car</MenuItem>
+        <MenuItem value="electric_scooter">E-Scooter</MenuItem>
+        <MenuItem value="gas_car">Gas Car</MenuItem>
+        <MenuItem value="public_transport">Public Transport</MenuItem>
+        <MenuItem value="walking">Walking</MenuItem>
+      </Select>
+      <Button type="submit" fullWidth variant="contained" sx={{ mt: 1, mb: 2 }}>
         Submit
       </Button>
     </Box>
