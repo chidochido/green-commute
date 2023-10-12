@@ -1,5 +1,16 @@
 # green-commute
 
+## To deploy locally
+
+in the backend directory, run:
+& 'C:\Users\Mini_\.vscode\extensions\redhat.java-1.23.0-win32-x64\jre\17.0.8.1-win32-x86_64\bin\java.exe' '@C:\Users\Mini_\AppData\Local\Temp\cp_asejjr320tdagemgpoi36nx86.argfile' 'com.group5.greencommute.GreenCommuteApplication' 
+
+and then it should be deployed on port 8080 (http://localhost:8080)
+
+for any issues first check proper installation of maven and run:
+mvn clean install -U
+
+
 ## for user data manipulation
 
 If you wanted to get all user's names run:
