@@ -15,7 +15,7 @@ We are open to additional feedback to improve the user's experience while intera
 
 
 2. Maps Interface
-![login.png](pics%2Flogin.png)
+![dash.png](pics%2Fdash.png)
 
 
 3. Example Carbon Footprint Calculation
