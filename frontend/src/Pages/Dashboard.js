@@ -24,6 +24,7 @@ function Dashboard(props) {
   const [results, gotResults] = useState(false);
   const [emissions, setEmissions] = useState(0);
   const [baselineEmissions, setBaselineEmissions] = useState(0);
+  const [label, setLabel] = useState("by not driving a gas car");
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GMAPS_JS_API_KEY,
@@ -80,6 +81,11 @@ function Dashboard(props) {
       setDirectionsResponse(results);
       setDistance(results.routes[0].legs[0].distance.text);
       input.set("distance", results.routes[0].legs[0].distance.value / 1609);
+      if (input.get("transport") === "gas-car") {
+        setLabel("by carpooling in a gas car");
+      } else {
+        setLabel("by not driving a gas car");
+      }
       if (
         input.get("transport") !== "walking" &&
         input.get("transport") !== "biking"
@@ -180,7 +186,7 @@ function Dashboard(props) {
           <Typography paddingTop={"25px"}>
             You have saved{" "}
             {Math.trunc((baselineEmissions - emissions) * 100) / 100} kg of C02
-            emissions by not driving a gas car. This is equivalent to{" "}
+            emissions {label}. This is equivalent to{" "}
             {Math.trunc((baselineEmissions / 22) * 100) / 100} trees planted
             over a year.
           </Typography>
