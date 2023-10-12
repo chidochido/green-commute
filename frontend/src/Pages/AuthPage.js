@@ -21,7 +21,9 @@ export default function AuthPage() {
   const newUserLabel = loginMode ? "New User?" : "Back to Sign In";
 
   const [pwdMatch, setPwdMatch] = useState(true);
-  const pwdMatchLabel = pwdMatch ? "" : "ERROR: Invalid username, password, or both. Please ensure that passwords match!";
+  const pwdMatchLabel = pwdMatch
+    ? ""
+    : "ERROR: Invalid username, password, or both.";
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -95,6 +97,7 @@ export default function AuthPage() {
 
   const switchModeHandler = () => {
     setLoginMode((loginMode) => !loginMode);
+    setPwdMatch(true);
   };
 
   return (
@@ -186,7 +189,7 @@ export default function AuthPage() {
 
               <Button
                 type="submit"
-                style = {{background:'green'}}
+                style={{ background: "green" }}
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
@@ -197,7 +200,7 @@ export default function AuthPage() {
 
             <Button
               type="submit"
-              style = {{color:'green'}}
+              style={{ color: "green" }}
               variant="text"
               onClick={switchModeHandler}
             >
