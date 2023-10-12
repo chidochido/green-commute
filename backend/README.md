@@ -26,6 +26,9 @@ http://localhost:8080/api/user/deleteUser?name=nemo
 
 ## for carbon emission calculations
 
+the gcp url to use for carbon calls is:
+https://project1cs3300.ue.r.appspot.com/
+
 To get the carbon emissions of a gas car:
 [url]/emissionCalc/gas-car?distance=[distance in miles]&passengers=[number of passengers]
 

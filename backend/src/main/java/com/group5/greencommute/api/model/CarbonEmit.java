@@ -65,7 +65,7 @@ public class CarbonEmit {
                     if(tmp.charAt(j)==',')break;
                     val = val+tmp.charAt(j);
                 }
-                return distance*Double.valueOf(val)/1000.0;
+                return Double.valueOf(val)/1000.0;
             }
         }
         return 0.0;
