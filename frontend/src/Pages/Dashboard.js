@@ -20,7 +20,6 @@ function Dashboard(props) {
   const google = window.google;
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
-  const [duration, setDuration] = useState("");
 
   const [results, setResults] = useState("");
   const [gasCarEmissions, setGasCarEmissions] = useState(0);
@@ -80,7 +79,6 @@ function Dashboard(props) {
       });
       setDirectionsResponse(results);
       setDistance(results.routes[0].legs[0].distance.text);
-      setDuration(results.routes[0].legs[0].duration.text);
       input.set("distance", results.routes[0].legs[0].distance.value / 1609);
       getGasCarFootprint(input);
     } catch (err) {
