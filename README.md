@@ -9,3 +9,14 @@ After executing `npm start`, you will then be redirected to your default browser
 
 We are open to additional feedback to improve the user's experience while interacting with our web application. Enjoy!
 
+## Example
+1. Login Screen
+![login.png](pics%2Flogin.png)
+
+
+2. Maps Interface
+![login.png](pics%2Flogin.png)
+
+
+3. Example Carbon Footprint Calculation
+![working.png](pics%2Fworking.png)
