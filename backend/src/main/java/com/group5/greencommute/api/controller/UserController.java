@@ -79,7 +79,7 @@ public class UserController {
             user.setEmail(userDetails.get("email"));
             userService.saveUserDetails(user);
             res.put("message", "created user successfully");
-            return new ResponseEntity<>(res, HttpStatus.CONFLICT);
+            return new ResponseEntity<>(res, HttpStatus.OK);
         }
     }
 
@@ -106,7 +106,7 @@ public class UserController {
             res.put("password", user.getPwd());
             res.put("email", user.getEmail());
             res.put("score", user.getScore());
-            return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(res, HttpStatus.OK);
         } else {
             res.put("message", "unknown server error");
             return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
