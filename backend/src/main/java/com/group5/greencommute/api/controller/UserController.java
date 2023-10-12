@@ -63,10 +63,25 @@ public class UserController {
     }
 
 
-//    @PostMapping("/signup")
-//    public ResponseEntity<Map<String, Object>> signUp (@RequestBody Map<String, Object> userDetails) {
-//
-//    }
+    @PostMapping("/signup")
+    public ResponseEntity<Map<String, Object>> signUp (@RequestBody Map<String, String> userDetails) throws InterruptedException, ExecutionException {
+        Map<String, Object> res = new HashMap<>();
+
+
+        if (userService.getUserDetails(userDetails.get("username")) != null) {
+            res.put("message", "user already exists");
+            return new ResponseEntity<>(res, HttpStatus.CONFLICT);
+        } else {
+            User user = new User();
+            user.setName(userDetails.get("username"));
+            user.setPwd(userDetails.get("password"));
+            user.setEmail(userDetails.get("email"));
+            userService.saveUserDetails(user);
+            res.put("message", "created user successfully");
+            return new ResponseEntity<>(res, HttpStatus.CONFLICT);
+        }
+    }
+
 
     @PostMapping("/login")
     public ResponseEntity<Map<String, Object>> logIn (@RequestBody Map<String, String> userDetails)  throws InterruptedException, ExecutionException {
