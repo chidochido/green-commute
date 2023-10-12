@@ -6,13 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5030cdcd-5836-4510-8bdf-f8939e99a8cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/model/CarbonEmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/model/CarbonEmit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/FBInitialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/FBInitialize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dbforgreen-firebase-adminsdk-47x5b-688c50e263.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/api/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group5/greencommute/api/controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/databaseinit/FBInitialize.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/group5/greencommute/databaseinit/FBInitialize.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/GreenCommuteApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/api/controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/api/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/databaseinit/FBInitialize.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/service/UserService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
