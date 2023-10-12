@@ -16,24 +16,16 @@ const theme = createTheme();
 
 export default function AuthPage() {
   const navigate = useNavigate();
+
   const [loginMode, setLoginMode] = useState(true);
   const signInLabel = loginMode ? "Sign In" : "Sign Up";
   const newUserLabel = loginMode ? "New User?" : "Back to Sign In";
 
-  const [pwdMatch, setPwdMatch] = useState(true);
-  const pwdMatchLabel = pwdMatch
-    ? ""
-    : "ERROR: Invalid username, password, or both.";
+  const [error, setError] = useState("");
 
   const submitHandler = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("username"),
-      password: data.get("password"),
-      retyped: data.get("retypedPassword"),
-    });
-
     if (
       // input validation
       data.get("username").replace(/\s/g, "").length > 0 &&
@@ -42,62 +34,75 @@ export default function AuthPage() {
         data.get("password").replace(/\s/g, "") ===
           data.get("retypedPassword").replace(/\s/g, ""))
     ) {
-      setPwdMatch(true);
-
-      //Comment out when backend is connected
-      console.log(data);
-      navigate("/dashboard");
-
-      // TODO: Connect with backend by replacing fetch parameter with
-      // correct backend URL in these two handlers, and uncomment.
-      //loginMode ? loginHandler(data) : signupHandler(data);
+      setError("");
+      loginMode ? loginHandler(data) : signupHandler(data);
     } else {
-      setPwdMatch(false);
+      setError("Invalid username or password.");
     }
   };
 
   const loginHandler = async (input) => {
     try {
-      const res = await fetch("http://localhost:3001/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: input.get("username"),
-          password: input.get("password"),
-        }),
-      });
-      console.log(await res.json());
-      navigate("/dashboard");
+      const res = await fetch(
+        "https://project1cs3300.ue.r.appspot.com/api/user/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: input.get("username"),
+            password: input.get("password"),
+          }),
+        }
+      );
+      let status = await res.json();
+      if (status.message) {
+        setError("Invalid username or password.");
+      } else {
+        console.log("SUCCESS");
+        setError("");
+        navigate("/dashboard");
+      }
     } catch (err) {
+      setError("Invalid username or password.");
       console.log(err);
     }
   };
 
   const signupHandler = async (input) => {
     try {
-      const res = await fetch("http://localhost:3001/api/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: input.get("username"),
-          password: input.get("password"),
-          type: input.get("type"),
-        }),
-      });
-      console.log(await res.json());
-      setLoginMode(true);
+      const res = await fetch(
+        "https://project1cs3300.ue.r.appspot.com/api/user/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: input.get("username"),
+            password: input.get("password"),
+          }),
+        }
+      );
+      let status = await res.json();
+      if (status.message === "user already exists") {
+        console.log(status);
+        setError("User already exists.");
+      } else {
+        console.log("SUCCESS");
+        setError("");
+        setLoginMode(true);
+      }
     } catch (err) {
+      setError("User already exists.");
       console.log(err);
     }
   };
 
   const switchModeHandler = () => {
     setLoginMode((loginMode) => !loginMode);
-    setPwdMatch(true);
+    setError("");
   };
 
   return (
@@ -184,7 +189,7 @@ export default function AuthPage() {
               )}
 
               <Typography component="h8" variant="h8" color="red">
-                {pwdMatchLabel}
+                {error}
               </Typography>
 
               <Button

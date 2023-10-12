@@ -22,6 +22,9 @@ function Dashboard(props) {
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
+  const [results, setResults] = useState("");
+  const [gasCarEmissions, setGasCarEmissions] = useState(0);
+
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GMAPS_JS_API_KEY,
     libraries: ["places"],
@@ -35,12 +38,18 @@ function Dashboard(props) {
     console.log(input);
     getDirections(input);
     if (
-      input.get("transport") !== "biking" ||
-      input.get("transport") !== "walking"
+      input.get("transport") === "biking" ||
+      input.get("transport") === "walking"
     ) {
-      // TODO: make the api call and display the results as carbon footprint
-      //let results = getCarbonFootprint(input);
-      // this is because we already know biking and walking are 0. we can just display 0 without making a call.
+      getGasCarFootprint(input);
+      let tmp =
+        "You will emit 0 kg of CO2e on this trip. You have saved " +
+        Math.trunc(gasCarEmissions * 100) / 100 +
+        " kg of C02 emissions by not driving a gas car. This is equivalent to " +
+        Math.trunc((gasCarEmissions / 22) * 100) / 100 +
+        " trees planted.";
+      setResults(tmp);
+    } else {
     }
 
     /*
@@ -72,15 +81,8 @@ function Dashboard(props) {
       setDirectionsResponse(results);
       setDistance(results.routes[0].legs[0].distance.text);
       setDuration(results.routes[0].legs[0].duration.text);
-
-      if (
-        input.get("transport") !== "biking" ||
-        input.get("transport") !== "walking"
-      ) {
-        // make the api call and display the results as carbon footprint
-      } else {
-        // dont make the api call but display 0 as carbon footprint
-      }
+      input.set("distance", results.routes[0].legs[0].distance.value / 1609);
+      getGasCarFootprint(input);
     } catch (err) {
       console.log(err);
     }
@@ -88,9 +90,45 @@ function Dashboard(props) {
 
   const getCarbonFootprint = async (input) => {
     try {
-      // TODO: make the api call and display the results as carbon footprint
+      const res = await fetch("URL", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          distance: input.get("distance"),
+          password: input.get("password"),
+        }),
+      });
+      console.log(await res.json());
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const getGasCarFootprint = async (input) => {
+    try {
+      const queryParams = new URLSearchParams();
+      queryParams.append("distance", input.get("distance"));
+      queryParams.append("passengers", input.get("numPeople"));
+      const url = `https://project1cs3300.ue.r.appspot.com/emissionCalc/gas-car?${queryParams.toString()}`;
+      console.log(url);
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setGasCarEmissions(data);
+        console.log("RETURNED: " + gasCarEmissions);
+      } else {
+        console.log(`Request failed with status: ${res.status}`);
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -119,7 +157,7 @@ function Dashboard(props) {
       >
         <Inputs submitHandler={submitHandler} />
         <Typography>Distance: {distance} </Typography>
-        <Typography>Duration: {duration} </Typography>
+        <Typography>{results} </Typography>
       </Box>
     </Stack>
   );
