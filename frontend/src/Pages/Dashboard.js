@@ -19,8 +19,12 @@ function Dashboard(props) {
 
   const google = window.google;
   const [directionsResponse, setDirectionsResponse] = useState(null);
-  const [distance, setDistance] = useState("");
-  const [duration, setDuration] = useState("");
+  const [distance, setDistance] = useState(0);
+
+  const [results, gotResults] = useState(false);
+  const [emissions, setEmissions] = useState(0);
+  const [baselineEmissions, setBaselineEmissions] = useState(0);
+  const [label, setLabel] = useState("by not driving a gas car");
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GMAPS_JS_API_KEY,
@@ -31,16 +35,21 @@ function Dashboard(props) {
     return "LOADING";
   }
 
-  const submitHandler = (input) => {
+  const submitHandler = async (input) => {
     console.log(input);
-    getDirections(input);
+    await getDirections(input);
     if (
-      input.get("transport") !== "biking" ||
-      input.get("transport") !== "walking"
+      input.get("transport") === "biking" ||
+      input.get("transport") === "walking"
     ) {
-      // TODO: make the api call and display the results as carbon footprint
-      //let results = getCarbonFootprint(input);
-      // this is because we already know biking and walking are 0. we can just display 0 without making a call.
+      // let tmp =
+      //   "You will emit 0 kg of CO2e on this trip. You have saved " +
+      //   Math.trunc(gasCarEmissions * 100) / 100 +
+      //   " kg of C02 emissions by not driving a gas car. This is equivalent to " +
+      //   Math.trunc((gasCarEmissions / 22) * 100) / 100 +
+      //   " trees planted.";
+      gotResults(true);
+    } else {
     }
 
     /*
@@ -71,26 +80,75 @@ function Dashboard(props) {
       });
       setDirectionsResponse(results);
       setDistance(results.routes[0].legs[0].distance.text);
-      setDuration(results.routes[0].legs[0].duration.text);
-
-      if (
-        input.get("transport") !== "biking" ||
-        input.get("transport") !== "walking"
-      ) {
-        // make the api call and display the results as carbon footprint
+      input.set("distance", results.routes[0].legs[0].distance.value / 1609);
+      if (input.get("transport") === "gas-car") {
+        setLabel("by carpooling in a gas car");
       } else {
-        // dont make the api call but display 0 as carbon footprint
+        setLabel("by not driving a gas car");
       }
+      if (
+        input.get("transport") !== "walking" &&
+        input.get("transport") !== "biking"
+      ) {
+        await getFootprint(input, input.get("transport"));
+      } else {
+        setEmissions(0);
+      }
+      await getBaselineFootprint(input);
     } catch (err) {
       console.log(err);
     }
   };
 
-  const getCarbonFootprint = async (input) => {
+  const getFootprint = async (input, type) => {
     try {
-      // TODO: make the api call and display the results as carbon footprint
+      const queryParams = new URLSearchParams();
+      queryParams.append("distance", input.get("distance"));
+      queryParams.append("passengers", input.get("numPeople"));
+      const url = `https://project1cs3300.ue.r.appspot.com/emissionCalc/${type}?${queryParams.toString()}`;
+      console.log(url);
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setEmissions(Math.trunc(data * 100) / 100);
+      } else {
+        console.log(`Request failed with status: ${res.status}`);
+      }
     } catch (err) {
-      console.log(err);
+      console.error(err);
+    }
+  };
+
+  // baseline is gas-car with 1 person
+  const getBaselineFootprint = async (input) => {
+    try {
+      const queryParams = new URLSearchParams();
+      queryParams.append("distance", input.get("distance"));
+      queryParams.append("passengers", 1);
+      const url = `https://project1cs3300.ue.r.appspot.com/emissionCalc/gas-car?${queryParams.toString()}`;
+      console.log(url);
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setBaselineEmissions(Math.trunc(data * 100) / 100);
+        console.log(data);
+      } else {
+        console.log(`Request failed with status: ${res.status}`);
+      }
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -119,7 +177,20 @@ function Dashboard(props) {
       >
         <Inputs submitHandler={submitHandler} />
         <Typography>Distance: {distance} </Typography>
-        <Typography>Duration: {duration} </Typography>
+        {results && (
+          <Typography paddingTop={"25px"}>
+            You will emit {emissions} kg of CO2 on this trip.
+          </Typography>
+        )}
+        {emissions < baselineEmissions && (
+          <Typography paddingTop={"25px"}>
+            You have saved{" "}
+            {Math.trunc((baselineEmissions - emissions) * 100) / 100} kg of C02
+            emissions {label}. This is equivalent to{" "}
+            {Math.trunc((baselineEmissions / 22) * 100) / 100} trees planted
+            over a year.
+          </Typography>
+        )}
       </Box>
     </Stack>
   );
