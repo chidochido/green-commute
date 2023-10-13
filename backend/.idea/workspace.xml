@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5030cdcd-5836-4510-8bdf-f8939e99a8cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/GreenCommuteApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/api/controller/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/api/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/databaseinit/FBInitialize.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/group5/greencommute/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/CO2EmissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/CO2EmissionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/model/CarbonEmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/model/CarbonEmit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/FBInitialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/FBInitialize.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,14 +53,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/moalr/Downloads/green-commute-main (2)/green-commute/backend/src/main/java/com/group5/greencommute/databaseinit"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/moalr/Downloads/green-commute-main (2)/green-commute/backend&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\moalr\Downloads\green-commute-main (2)\green-commute\backend\src\main\java\com\group5\greencommute\databaseinit" />
