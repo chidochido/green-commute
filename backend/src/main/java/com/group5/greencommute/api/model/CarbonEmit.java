@@ -19,7 +19,7 @@ public class CarbonEmit {
 
         HttpRequest postReq = HttpRequest.newBuilder()
                 .uri(new URI("https://www.carboninterface.com/api/v1/estimates"))
-                .header("Authorization"," Bearer UEtop2WHO8I36kLTBZqAw")
+                .header("Authorization"," Bearer bKhw3JcIq99aUCEER0BvdA")
                 .header("Content-Type","application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonReq))
                 .build();
@@ -51,7 +51,7 @@ public class CarbonEmit {
 
         HttpRequest postReq = HttpRequest.newBuilder()
                 .uri(new URI("https://www.carboninterface.com/api/v1/estimates"))
-                .header("Authorization"," Bearer UEtop2WHO8I36kLTBZqAw")
+                .header("Authorization"," Bearer bKhw3JcIq99aUCEER0BvdA")
                 .header("Content-Type","application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonReq))
                 .build();
@@ -84,7 +84,7 @@ public class CarbonEmit {
 
         HttpRequest postReq = HttpRequest.newBuilder()
                 .uri(new URI("https://www.carboninterface.com/api/v1/estimates"))
-                .header("Authorization"," Bearer UEtop2WHO8I36kLTBZqAw")
+                .header("Authorization"," Bearer bKhw3JcIq99aUCEER0BvdA")
                 .header("Content-Type","application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonReq))
                 .build();
@@ -117,7 +117,7 @@ public class CarbonEmit {
 
         HttpRequest postReq = HttpRequest.newBuilder()
                 .uri(new URI("https://www.carboninterface.com/api/v1/estimates"))
-                .header("Authorization"," Bearer UEtop2WHO8I36kLTBZqAw")
+                .header("Authorization"," Bearer bKhw3JcIq99aUCEER0BvdA")
                 .header("Content-Type","application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonReq))
                 .build();
