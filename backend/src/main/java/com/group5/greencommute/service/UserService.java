@@ -9,28 +9,14 @@ import com.google.firebase.cloud.FirestoreClient;
 import com.group5.greencommute.api.model.User;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @Service
 public class UserService {
-    private List<User> userList;
-    public UserService() {
-        userList = new ArrayList<>();
-    }
 
-    public User getUser(Integer id) {
-        for (User user: userList) {
-            if (id == user.getId()) {
-                return user;
-            }
-        }
-        return null;
-    }
+    public UserService() {}
 
-/////
+
     public static final String COL_NAME="users";
 
     public String saveUserDetails(User user) throws InterruptedException, ExecutionException {
@@ -46,7 +32,7 @@ public class UserService {
 
         DocumentSnapshot document = future.get();
 
-        User user = null;
+        User user;
 
         if(document.exists()) {
             user = document.toObject(User.class);
@@ -70,8 +56,6 @@ public class UserService {
         return "Document with User ID "+name+" has been deleted";
     }
 
-    public List<User> getUserList() {
-        return userList;
-    }
+
 
 }
