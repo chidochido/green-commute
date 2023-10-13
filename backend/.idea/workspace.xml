@@ -7,10 +7,8 @@
     <list default="true" id="5030cdcd-5836-4510-8bdf-f8939e99a8cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/CO2EmissionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/CO2EmissionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/model/CarbonEmit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/api/model/CarbonEmit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/FBInitialize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/FBInitialize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/group5/greencommute/databaseinit/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +26,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="GcpDeployedCode" />
+                    <option name="lastUsedInstant" value="1697156295" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="CarbonCalcUrl" />
                     <option name="lastUsedInstant" value="1697092310" />

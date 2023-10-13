@@ -13,6 +13,15 @@ mvn clean install -U
 
 ## for user data manipulation
 
+the gcp url to use for carbon and database calls is:
+https://project1cs3300.ue.r.appspot.com/
+
+If you wanted to sign someone in (make sure you have "username" and "password" in the body):
+[url]/api/user/login
+
+If you wanted to sign someone up (make sure you have "username" and "password" in the body):
+[url]/api/user/signup 
+
 If you wanted to get all user's names run:
 [url]/api/user/getAll
 
@@ -36,9 +45,6 @@ http://localhost:8080/api/user/deleteUser?name=nemo
 
 
 ## for carbon emission calculations
-
-the gcp url to use for carbon calls is:
-https://project1cs3300.ue.r.appspot.com/
 
 To get the carbon emissions of a gas car:
 [url]/emissionCalc/gas-car?distance=[distance in miles]&passengers=[number of passengers]

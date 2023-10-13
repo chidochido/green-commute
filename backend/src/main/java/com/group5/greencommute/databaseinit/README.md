@@ -5,6 +5,12 @@ If you wanted to add/delete/update/get using code use the functions in UserServi
 
 Codes after //// are the added database codes
 
+If you wanted to sign someone in (make sure you have "username" and "password" in the body):
+[url]/api/user/login
+
+If you wanted to sign someone up (make sure you have "username" and "password" in the body):
+[url]/api/user/signup
+
 If you wanted to get all user's names run:
 [url]/api/user/getAll
 
