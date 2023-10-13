@@ -27,22 +27,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping()
-    public ResponseEntity<User> getUser(@RequestParam Integer id) {
-        User user =  userService.getUser(id);
-        return user == null ? new ResponseEntity<>(null, HttpStatus.NOT_FOUND) : new ResponseEntity<>(user, HttpStatus.OK);
-    }
-
-    /////
-    @GetMapping("/getAll")
-    public String getAllUsers() {
-        List<User> currUserList = userService.getUserList();
-        String users = "";
-        for (User curr: currUserList){
-            users = users + curr.getName() + "\n";
-        }
-        return users;
-    }
 
     @GetMapping("/getUserDetails")
     public User getUser(@RequestParam String name ) throws InterruptedException, ExecutionException{
@@ -88,9 +72,9 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> logIn (@RequestBody Map<String, String> userDetails)  throws InterruptedException, ExecutionException {
         Map<String, Object> res = new HashMap<>();
 
-        User user = userService.getUserDetails(userDetails.get("username")); // need to verify getUserDetails works together
+        User user = userService.getUserDetails(userDetails.get("username"));
 
-        if (user == null) {
+        if (user == null) { // first we check if a user with this name exists
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
@@ -100,12 +84,12 @@ public class UserController {
         } else if (!user.getPwd().equals(userDetails.get("password"))) {
             res.put("message", "password incorrect");
             return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
-        } else if (user.getPwd().equals(userDetails.get("password"))) {
+        } else if (user.getPwd().equals(userDetails.get("password"))) { // request unauthorized if password wrong or null
             res.put("id", user.getId());
             res.put("username", user.getName());
             res.put("password", user.getPwd());
             res.put("email", user.getEmail());
-            res.put("score", user.getScore());
+            res.put("score", user.getScore()); // put user details in response if correct
             return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
         } else {
             res.put("message", "unknown server error");
