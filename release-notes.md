@@ -25,12 +25,14 @@ bug fixes that were fixed during development:
 - Moved Gson dependency within pom.xml to fix build errors
 - Added dropdown transport support
 - Fix path in FBInitialize to ensure proper deployment of FireBase DB
+- Fix crashes that would happen due to Google Places API not being enabled
 
 ## Known Bugs and Defects
 
 At this point, the following bugs are present:
 
 - Did not use BCrypt for password protection
+- Did not use Spring Security
 - Proper status codes are not returned in all error cases
 - User checking is only based on name and not also email
 - We don't have make/model/year specific emissions data
